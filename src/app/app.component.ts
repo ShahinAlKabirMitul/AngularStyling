@@ -12,4 +12,6 @@ export class AppComponent {
     {title:'Master Angular Animations',isActivated:false},
     
   ]
+  title='My Quotes'
+
 }
