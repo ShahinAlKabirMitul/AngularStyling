@@ -13,5 +13,6 @@ export class AppComponent {
     
   ]
   title='My Quotes'
+  isFavorite=false;
 
 }

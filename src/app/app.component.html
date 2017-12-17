@@ -1,16 +1,17 @@
 <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-          <h1>{{title}}</h1>
-        <div class="interesting">
-                <app-quote class="favorite"></app-quote>
-                <app-author></app-author>
-        </div>
-        <div class="boring">
-                <app-quote></app-quote>
-                <app-author></app-author>
-        </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h1>{{title}}</h1>
+      <div class="interesting">
+        <app-quote
+          (click)="isFavorite=!isFavorite"
+          [ngClass]="{'favorite':isFavorite}">
+        </app-quote>
       </div>
-      
+      <div class="boring">
+        <app-quote></app-quote>
+      </div>
     </div>
   </div>
+</div>
+
