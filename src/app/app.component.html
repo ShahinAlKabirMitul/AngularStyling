@@ -10,7 +10,10 @@
           >
         </app-quote>
       </div>
-      <div class="boring">
+      <button class="btn btn-primary" 
+      (click)="showBoring(boring)"
+      >Show Boring Code</button>
+      <div class="boring" #boring  style="display: none">
         <app-quote></app-quote>
       </div>
     </div>
