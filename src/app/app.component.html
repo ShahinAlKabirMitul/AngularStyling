@@ -1,22 +1,15 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
-      <h1>{{title}}</h1>
-      <div class="interesting">
-        <app-quote
-          (click)="isFavorite=!isFavorite"
-          [ngClass]="{'favorite super-favorite':isFavorite}"
-          [ngStyle]="{'width.px':isFavorite?'600':'400'}"
-          >
-        </app-quote>
-      </div>
-      <button class="btn btn-primary" 
-      (click)="showBoring(boring)"
-      >Show Boring Code</button>
-      <div class="boring" #boring  style="display: none">
-        <app-quote></app-quote>
-      </div>
+    <div class="col-xs-12">
+      <ul class="nav nav-pills">
+        <li role="presentation" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/">Projects</a></li>
+        <li role="presentation" routerLinkActive="active"><a routerLink="/users">Users</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>
-
