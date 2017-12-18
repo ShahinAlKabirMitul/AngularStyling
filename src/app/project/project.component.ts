@@ -24,5 +24,11 @@ export class ProjectComponent implements OnInit {
   onDelete() {
     this.projectDeleted.emit();
   }
-
+  getPrjStatusClass(){
+    return{
+        'badge-success':this.project.status==='active',
+        'badge-warning':this.project.status ==='inactive',
+        'badge-danger':this.project.status ==='critical'
+    };
+  }
 }
