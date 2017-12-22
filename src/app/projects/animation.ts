@@ -1,3 +1,3 @@
 import { trigger } from '@angular/animations';
 
-export const markedTrigger=trigger();
+// export const markedTrigger=trigger('markedTrigger',);
