@@ -1,3 +1,4 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
@@ -32,6 +33,7 @@ import { ProjectComponent } from './project/project.component';
     FormsModule,
     HttpModule,
     AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [
     ProjectsService

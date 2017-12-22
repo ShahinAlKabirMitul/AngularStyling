@@ -1,3 +1,4 @@
+
 <div class="row">
   <div class="col-xl-12">
     <h3>My Projects</h3>
@@ -9,7 +10,7 @@
     <button
       class="btn btn-default"
       *ngIf="!createNew"
-      (click)="createNew = true">Create new Project</button>
+      (click)="createNew = true" > Create new Project </button>
     <button
       class="btn btn-danger"
       *ngIf="createNew"
@@ -27,7 +28,7 @@
 <hr>
 
 <div class="row">
-  <div class="col-xl-12">
+  <div class="col-lg-12">
     <div
       class="loading-bar"
       *ngIf="!projects">
@@ -39,7 +40,8 @@
     <app-project 
       *ngFor="let prj of projects; let i = index"
       [project]="prj"
-      [ngClass]="{marked:markedPrjIndex===i,inactive:prj.status === 'inactive'}"
+      [@markedState]="markedPrjIndex===i?'marked':'default'"
+      [ngClass]="{inactive:prj.status === 'inactive'}"
       (statusUpdated)="onStatusUpdated($event, i)"
       (projectDeleted)="onProjectDeleted(i)"
       (click)="markedPrjIndex = i"></app-project>
