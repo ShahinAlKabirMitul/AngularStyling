@@ -1,4 +1,4 @@
-import { markedTrigger } from './animation';
+import { itemStateTrigger, markedTrigger } from './animation';
 import { ProjectsService } from '../service/projects.service';
 import { Project } from './project.model';
 import { Component, OnInit } from '@angular/core';
@@ -9,7 +9,8 @@ import { Component, OnInit } from '@angular/core';
   templateUrl : './projects.component.html' ,
   styleUrls: ['./projects.component.css'] ,
   animations : [
-    markedTrigger
+    markedTrigger,
+    itemStateTrigger
   ]
 })
 
@@ -42,6 +43,6 @@ export class ProjectsComponent implements OnInit {
 
   onProjectCreated(project: Project) {
     this.createNew = false;
-    this.projects.push(project);
+    this.projects.unshift(project);
   }
 }
