@@ -21,6 +21,7 @@
   <div class="col-xl-12" style="overflow: hidden">
     <app-new-project
       *ngIf="createNew"
+      @slideState
       (projectCreated)="onProjectCreated($event)"
       (creationCancelled)="createNew = false"></app-new-project>
   </div>
@@ -38,10 +39,11 @@
     </div>
   
     <app-project 
-      *ngFor="let prj of projects; let i = index"
+      *ngFor="let prj of displayedProjects; let i = index"
       [project]="prj"
       [@markedState]="markedPrjIndex===i?'marked':'default'"
       @itemState
+      (@itemState.done) = " onItemAnimated($event, i) "
       [ngClass]="{inactive:prj.status === 'inactive'}"
       (statusUpdated)="onStatusUpdated($event, i)"
       (projectDeleted)="onProjectDeleted(i)"

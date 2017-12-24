@@ -1,8 +1,8 @@
-import { itemStateTrigger, markedTrigger } from './animation';
+import { itemStateTrigger, markedTrigger, slideStateTrigger } from './animation';
 import { ProjectsService } from '../service/projects.service';
 import { Project } from './project.model';
 import { Component, OnInit } from '@angular/core';
-
+import {AnimationEvent } from '@angular/animations';
 
 @Component({
   selector: 'app-projects',
@@ -10,13 +10,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./projects.component.css'] ,
   animations : [
     markedTrigger,
-    itemStateTrigger
+    itemStateTrigger,
+    slideStateTrigger
   ]
 })
 
 export class ProjectsComponent implements OnInit {
 
   projects: Project[];
+  displayedProjects: Project[] = [];
   markedPrjIndex = 0;
   progress = 'progressing';
   createNew = false;
@@ -29,6 +31,9 @@ export class ProjectsComponent implements OnInit {
         (prj: Project[]) => {
           this.progress = 'finished';
           this.projects = prj;
+          if ( this.projects.length >= 1) {
+              this.displayedProjects.push(this.projects[0]);
+          }
         }
       );
   }
@@ -44,5 +49,15 @@ export class ProjectsComponent implements OnInit {
   onProjectCreated(project: Project) {
     this.createNew = false;
     this.projects.unshift(project);
+  }
+  onItemAnimated(animationEvent: AnimationEvent, lastPrjId: number) {
+    if (animationEvent.fromState != 'void') {
+      return;
+    }
+    if (this.projects.length > lastPrjId + 1 ) {
+      this.displayedProjects.push(this.projects[ lastPrjId + 1 ]);
+    } else {
+      this.projects = this.displayedProjects;
+    }
   }
 }
