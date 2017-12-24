@@ -1,3 +1,4 @@
+import { buttonStateTrigger } from './animations';
 import { Project } from '../projects/project.model';
 import { NgForm } from '@angular/forms';
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
@@ -5,7 +6,11 @@ import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/cor
 @Component({
   selector: 'app-new-project',
   templateUrl: './new-project.component.html',
-  styleUrls: ['./new-project.component.css']
+  styleUrls: ['./new-project.component.css'],
+  animations: [
+    buttonStateTrigger
+  ]
+
 })
 export class NewProjectComponent implements OnInit {
 

@@ -4,6 +4,7 @@ import { Project } from './project.model';
 import { Component, OnInit } from '@angular/core';
 import {AnimationEvent } from '@angular/animations';
 
+
 @Component({
   selector: 'app-projects',
   templateUrl : './projects.component.html' ,
@@ -48,10 +49,12 @@ export class ProjectsComponent implements OnInit {
 
   onProjectCreated(project: Project) {
     this.createNew = false;
-    this.projects.unshift(project);
+    setTimeout( () => {
+      this.projects.unshift(project);
+    }, 300 );
   }
   onItemAnimated(animationEvent: AnimationEvent, lastPrjId: number) {
-    if (animationEvent.fromState != 'void') {
+    if (animationEvent.fromState !== 'void') {
       return;
     }
     if (this.projects.length > lastPrjId + 1 ) {

@@ -1,5 +1,6 @@
 import { state, style, trigger, transition, animate, keyframes } from '@angular/animations';
 
+
  export const markedTrigger = trigger('markedState', [
     state('default', style({
         border: '1px solid black',
@@ -87,5 +88,21 @@ export const itemStateTrigger = trigger('itemState', [
         transform: 'translateY(-100%)'
       })
     ]))
-  )
+  ),
+  transition('slidUp=>slidDown', [
+    style({
+      transform: 'translateY(-100%)'
+    }),
+    animate('300ms ease-out', style({
+      transform: 'translateY(0)'
+    }))
+  ]),
+  transition('slidDown=>slidUp', [
+    style({
+      transform: 'translateY(0)'
+    }),
+    animate('300ms ease-out', style({
+      transform: 'translateY(-100%)'
+    }))
+  ])
 ]);

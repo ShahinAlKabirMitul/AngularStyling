@@ -21,7 +21,7 @@
   <div class="col-xl-12" style="overflow: hidden">
     <app-new-project
       *ngIf="createNew"
-      @slideState
+      [@slideState]="createNew ? 'slidDown' : 'slidUp' "
       (projectCreated)="onProjectCreated($event)"
       (creationCancelled)="createNew = false"></app-new-project>
   </div>
